@@ -99,7 +99,7 @@ export function SessionDetailPage() {
   };
 
   const fieldClass =
-    'w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100';
+    'w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100';
   const labelClass = 'block text-xs font-semibold text-stone-500 dark:text-slate-400 uppercase tracking-wide mb-1';
 
   return (
@@ -117,7 +117,7 @@ export function SessionDetailPage() {
         {!isEditing && (
           <button
             onClick={() => setIsEditing(true)}
-            className="flex items-center gap-1.5 text-sm font-medium text-amber-600 hover:text-amber-700 dark:text-amber-400"
+            className="flex items-center gap-1.5 text-sm font-medium text-teal-700 hover:text-teal-800 dark:text-teal-400"
             aria-label="Sessie bewerken"
           >
             <Pencil className="w-3.5 h-3.5" aria-hidden="true" />
@@ -146,8 +146,8 @@ export function SessionDetailPage() {
                 </div>
               )} />
             </div>
-            <div className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-800/50 rounded-xl p-4">
-              <label htmlFor="edit-lesson" className="block text-sm font-bold text-amber-900 dark:text-amber-200 mb-1.5">Learning</label>
+            <div className="bg-teal-50/60 dark:bg-teal-950/20 border border-teal-200/70 dark:border-teal-800/50 rounded-xl p-4">
+              <label htmlFor="edit-lesson" className="block text-sm font-bold text-teal-900 dark:text-teal-200 mb-1.5">Learning</label>
               <textarea id="edit-lesson" rows={3} {...register('lessonLearned')} className={`${fieldClass} resize-none`} />
               {errors.lessonLearned && <p role="alert" className="mt-1 text-xs text-red-600">{errors.lessonLearned.message}</p>}
             </div>
@@ -213,7 +213,7 @@ export function SessionDetailPage() {
             </div>
             <div className="flex gap-3 pt-2">
               <button type="submit" disabled={isSaving}
-                className="flex-1 py-3 bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
+                className="flex-1 py-3 bg-neutral-900 hover:bg-neutral-800 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600">
                 <Check className="w-4 h-4" aria-hidden="true" />
                 {isSaving ? 'Opslaan…' : 'Opslaan'}
               </button>
@@ -229,8 +229,8 @@ export function SessionDetailPage() {
         /* ── VIEW MODE ── */
         <div className="space-y-5">
           {/* Learning — most prominent */}
-          <div className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-800/50 rounded-xl p-5">
-            <p className="text-xs font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-wide mb-2">Learning</p>
+          <div className="bg-teal-50/60 dark:bg-teal-950/20 border border-teal-200/70 dark:border-teal-800/50 rounded-xl p-5">
+            <p className="text-xs font-semibold text-teal-700 dark:text-teal-400 uppercase tracking-wide mb-2">Learning</p>
             <p className="text-base font-medium text-slate-900 dark:text-slate-100 leading-relaxed">
               {session.lessonLearned}
             </p>

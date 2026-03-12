@@ -12,7 +12,7 @@ export function SessionCard({ session, onClick }: SessionCardProps) {
   return (
     <button
       onClick={onClick}
-      className="w-full text-left bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4 hover:border-amber-300 dark:hover:border-amber-700 hover:shadow-sm transition-all"
+      className="w-full text-left bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4 hover:border-stone-300 hover:shadow-md dark:hover:border-slate-500 transition-all"
     >
       {/* Status dot + lesson */}
       <div className="flex gap-3 items-start">

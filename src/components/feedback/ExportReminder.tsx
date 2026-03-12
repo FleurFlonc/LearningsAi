@@ -13,23 +13,23 @@ export function ExportReminder({ onDismiss }: ExportReminderProps) {
   };
 
   return (
-    <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl dark:bg-amber-950/30 dark:border-amber-800">
-      <p className="text-sm text-amber-900 dark:text-amber-200 font-medium">
+    <div className="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-xl dark:bg-teal-950/30 dark:border-teal-800">
+      <p className="text-sm text-teal-900 dark:text-teal-200 font-medium">
         Je hebt 10 nieuwe sessies gelogd.
       </p>
-      <p className="text-xs text-amber-700 dark:text-amber-400 mt-0.5">
+      <p className="text-xs text-teal-700 dark:text-teal-400 mt-0.5">
         Overweeg een backup te maken.
       </p>
       <div className="mt-3 flex gap-2">
         <button
           onClick={handleExport}
-          className="px-4 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold rounded-lg transition-colors"
+          className="px-4 py-1.5 bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-semibold rounded-lg transition-colors dark:bg-teal-700 dark:hover:bg-teal-600"
         >
           Exporteer nu
         </button>
         <button
           onClick={onDismiss}
-          className="px-4 py-1.5 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold rounded-lg transition-colors dark:bg-amber-900/40 dark:text-amber-300"
+          className="px-4 py-1.5 bg-teal-100 hover:bg-teal-200 text-teal-800 text-xs font-semibold rounded-lg transition-colors dark:bg-teal-900/40 dark:text-teal-300"
         >
           Later herinneren
         </button>

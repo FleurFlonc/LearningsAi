@@ -3,7 +3,7 @@ import type { UserPreference } from '@/models/preferences';
 
 const DEFAULT_PREFERENCES: UserPreference = {
   id: 1,
-  themeMode: 'system',
+  themeMode: 'light',
   defaultView: 'lessons',
   exportFormat: 'json',
   onboardingCompleted: false,

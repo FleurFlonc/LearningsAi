@@ -141,7 +141,7 @@ export function SettingsPage() {
                 aria-pressed={preferences.themeMode === value}
                 className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                   preferences.themeMode === value
-                    ? 'bg-amber-500 text-white'
+                    ? 'bg-neutral-900 text-white dark:bg-teal-700'
                     : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
                 }`}
               >
@@ -165,7 +165,7 @@ export function SettingsPage() {
             <div className="h-2 bg-stone-100 dark:bg-slate-700 rounded-full overflow-hidden">
               <div
                 className={`h-full rounded-full transition-all ${
-                  percentage >= 80 ? 'bg-red-500' : percentage >= 60 ? 'bg-amber-500' : 'bg-green-500'
+                  percentage >= 80 ? 'bg-red-500' : percentage >= 60 ? 'bg-amber-500' : 'bg-teal-600'
                 }`}
                 style={{ width: `${Math.min(percentage, 100)}%` }}
                 role="progressbar"
@@ -184,7 +184,7 @@ export function SettingsPage() {
           <div>
             <button
               onClick={handleExport}
-              className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm rounded-xl transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold text-sm rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
             >
               Exporteer naar JSON
             </button>
@@ -226,7 +226,7 @@ export function SettingsPage() {
           {importState === 'idle' && (
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="w-full py-3 border-2 border-dashed border-stone-300 dark:border-slate-600 hover:border-amber-400 dark:hover:border-amber-500 text-stone-500 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 border-2 border-dashed border-stone-300 dark:border-slate-600 hover:border-teal-500 dark:hover:border-teal-500 text-stone-500 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-400 font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2"
             >
               <Upload className="w-4 h-4" aria-hidden="true" />
               Kies een backup-bestand
@@ -247,7 +247,7 @@ export function SettingsPage() {
               <div className="flex gap-2">
                 <button
                   onClick={handleImport}
-                  className="flex-1 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm rounded-xl transition-colors"
+                  className="flex-1 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold text-sm rounded-xl transition-colors dark:bg-teal-700 dark:hover:bg-teal-600"
                 >
                   Importeer
                 </button>
@@ -297,7 +297,7 @@ export function SettingsPage() {
         <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4">
           <button
             onClick={() => navigate('/onboarding')}
-            className="text-sm font-medium text-amber-600 dark:text-amber-400 hover:underline"
+            className="text-sm font-medium text-teal-700 dark:text-teal-400 hover:underline"
           >
             Bekijk introductie opnieuw
           </button>

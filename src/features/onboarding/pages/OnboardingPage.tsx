@@ -17,7 +17,7 @@ interface StepProps {
 function Step1({ onNext }: StepProps) {
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-6">
+      <div className="w-16 h-16 rounded-2xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center mb-6">
         <span className="text-3xl" aria-hidden="true">📖</span>
       </div>
       <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
@@ -28,7 +28,7 @@ function Step1({ onNext }: StepProps) {
       </p>
       <button
         onClick={onNext}
-        className="mt-8 w-full max-w-xs py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+        className="mt-8 w-full max-w-xs py-3.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
       >
         Volgende
         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -40,7 +40,7 @@ function Step1({ onNext }: StepProps) {
 function Step2({ onNext }: StepProps) {
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-6">
+      <div className="w-16 h-16 rounded-2xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center mb-6">
         <span className="text-3xl" aria-hidden="true">⚡</span>
       </div>
       <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
@@ -68,7 +68,7 @@ function Step2({ onNext }: StepProps) {
 
       <button
         onClick={onNext}
-        className="mt-6 w-full max-w-xs py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+        className="mt-6 w-full max-w-xs py-3.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
       >
         Volgende
         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -80,7 +80,7 @@ function Step2({ onNext }: StepProps) {
 function Step3({ onFinish }: { onFinish: () => void }) {
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-6">
+      <div className="w-16 h-16 rounded-2xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center mb-6">
         <span className="text-3xl" aria-hidden="true">🚀</span>
       </div>
       <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
@@ -91,7 +91,7 @@ function Step3({ onFinish }: { onFinish: () => void }) {
       </p>
       <button
         onClick={onFinish}
-        className="mt-8 w-full max-w-xs py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+        className="mt-8 w-full max-w-xs py-3.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
       >
         Log mijn eerste sessie
         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -124,7 +124,7 @@ export function OnboardingPage() {
           <span
             key={i}
             className={`w-2 h-2 rounded-full transition-colors ${
-              i === step ? 'bg-amber-500' : 'bg-stone-300 dark:bg-slate-600'
+              i === step ? 'bg-teal-700 dark:bg-teal-400' : 'bg-stone-300 dark:bg-slate-600'
             }`}
             aria-hidden="true"
           />

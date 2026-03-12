@@ -32,7 +32,7 @@ interface TooltipProps {
 function LineTooltip({ active, payload, label }: TooltipProps) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-slate-800 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-slate-700">
+    <div className="bg-neutral-900 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
       <p className="text-slate-400 mb-0.5">{label}</p>
       <p className="font-semibold">{payload[0].value} sessies</p>
     </div>
@@ -42,7 +42,7 @@ function LineTooltip({ active, payload, label }: TooltipProps) {
 function BarTooltip({ active, payload }: TooltipProps) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-slate-800 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-slate-700">
+    <div className="bg-neutral-900 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
       <p className="font-semibold">{payload[0].value} sessies</p>
     </div>
   );
@@ -51,7 +51,7 @@ function BarTooltip({ active, payload }: TooltipProps) {
 function PieTooltip({ active, payload }: TooltipProps) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-slate-800 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-slate-700">
+    <div className="bg-neutral-900 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
       <p>
         {payload[0].name}: <span className="font-semibold">{payload[0].value}</span>
       </p>
@@ -106,7 +106,7 @@ export function StatsPage() {
 
   const gridColor = 'rgba(148,163,184,0.15)';
   const axisColor = '#94a3b8';
-  const accentColor = '#f59e0b';
+  const accentColor = '#0F766E';
 
   return (
     <div className="max-w-lg mx-auto px-4 pt-4 pb-8 md:max-w-2xl">
@@ -158,7 +158,7 @@ export function StatsPage() {
           </p>
           <button
             onClick={() => navigate('/log')}
-            className="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-lg transition-colors"
+            className="px-5 py-2 bg-neutral-900 hover:bg-neutral-800 text-white text-sm font-semibold rounded-lg transition-colors dark:bg-teal-700 dark:hover:bg-teal-600"
           >
             Log een sessie
           </button>

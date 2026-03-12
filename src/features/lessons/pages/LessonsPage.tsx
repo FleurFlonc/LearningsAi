@@ -53,7 +53,7 @@ function FilterRow<T extends string>({
             aria-pressed={isActive}
             className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
               isActive
-                ? 'bg-amber-500 text-white'
+                ? 'bg-neutral-900 text-white dark:bg-teal-700'
                 : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
             }`}
           >

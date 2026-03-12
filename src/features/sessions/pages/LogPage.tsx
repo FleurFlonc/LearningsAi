@@ -148,7 +148,7 @@ export function LogPage() {
               rows={2}
               {...register('taskDescription')}
               placeholder="Beschrijf de taak in één of twee zinnen"
-              className="w-full px-3 py-2.5 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500"
+              className="w-full px-3 py-2.5 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500"
             />
             {errors.taskDescription && (
               <p role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400">
@@ -191,10 +191,10 @@ export function LogPage() {
           </div>
 
           {/* lessonLearned — visually prominent */}
-          <div className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-800/50 rounded-xl p-4">
+          <div className="bg-teal-50/60 dark:bg-teal-950/20 border border-teal-200/70 dark:border-teal-800/50 rounded-xl p-4">
             <label
               htmlFor="lessonLearned"
-              className="block text-sm font-bold text-amber-900 dark:text-amber-200 mb-1.5"
+              className="block text-sm font-bold text-teal-900 dark:text-teal-200 mb-1.5"
             >
               Wat is de les?
             </label>
@@ -203,7 +203,7 @@ export function LogPage() {
               rows={3}
               {...register('lessonLearned')}
               placeholder="Wat neem je mee naar de volgende keer?"
-              className="w-full px-3 py-2.5 rounded-xl border border-amber-200 bg-white/80 text-sm text-slate-900 placeholder-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent resize-none dark:bg-slate-800/60 dark:border-amber-700/60 dark:text-slate-100 dark:placeholder-amber-700"
+              className="w-full px-3 py-2.5 rounded-xl border border-teal-200 bg-white/80 text-sm text-slate-900 placeholder-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800/60 dark:border-teal-700/60 dark:text-slate-100 dark:placeholder-teal-700"
             />
             {errors.lessonLearned && (
               <p role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400">
@@ -237,7 +237,7 @@ export function LogPage() {
                     id="whatWentWrong"
                     rows={2}
                     {...register('whatWentWrong')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
                   />
                 </div>
                 <div>
@@ -248,7 +248,7 @@ export function LogPage() {
                     id="resolution"
                     rows={2}
                     {...register('resolution')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
                   />
                 </div>
 
@@ -301,7 +301,7 @@ export function LogPage() {
                   <select
                     id="taskType"
                     {...register('taskType')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
                   >
                     <option value="">— kies —</option>
                     {TASK_TYPE_OPTIONS.map((o) => (
@@ -318,7 +318,7 @@ export function LogPage() {
                     id="reflectionNotes"
                     rows={2}
                     {...register('reflectionNotes')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
                   />
                 </div>
               </div>
@@ -329,7 +329,7 @@ export function LogPage() {
           <button
             type="submit"
             disabled={saveStatus === 'saving' || saveStatus === 'success'}
-            className="w-full py-3.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+            className="w-full py-3.5 bg-neutral-900 hover:bg-neutral-800 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
           >
             {saveStatus === 'success' ? (
               <>

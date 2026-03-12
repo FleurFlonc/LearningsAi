@@ -15,7 +15,7 @@ export function StatCard({ label, value, icon, sublabel }: StatCardProps) {
           {label}
         </p>
         {icon && (
-          <span className="text-amber-500 dark:text-amber-400 shrink-0">{icon}</span>
+          <span className="text-teal-600 dark:text-teal-400 shrink-0">{icon}</span>
         )}
       </div>
       <p className="mt-2 text-2xl font-bold text-slate-900 dark:text-slate-100">{value}</p>
