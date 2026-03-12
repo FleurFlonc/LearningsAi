@@ -57,8 +57,8 @@ export function getToolData(
   const counts: Record<string, number> = {};
 
   for (const session of sessions) {
-    if (session.aiTool) {
-      counts[session.aiTool] = (counts[session.aiTool] ?? 0) + 1;
+    for (const tool of session.aiTools ?? []) {
+      counts[tool] = (counts[tool] ?? 0) + 1;
     }
   }
 

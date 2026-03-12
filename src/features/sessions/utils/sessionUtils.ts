@@ -59,7 +59,7 @@ export function isSessionComplete(session: LearningSession): boolean {
     'whatWentWrong',
     'resolution',
     'reflectionNotes',
-    'aiTool',
+    'aiTools',
     'taskType',
     'problemCategory',
     'resolutionType',

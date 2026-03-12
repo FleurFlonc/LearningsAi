@@ -90,7 +90,7 @@ export const useSessionStore = create<SessionStore>()((set, get) => ({
     }
 
     if (filterStatus !== null) result = result.filter((s) => s.status === filterStatus);
-    if (filterTool !== null) result = result.filter((s) => s.aiTool === filterTool);
+    if (filterTool !== null) result = result.filter((s) => s.aiTools?.includes(filterTool!) ?? false);
     if (filterTaskType !== null) result = result.filter((s) => s.taskType === filterTaskType);
 
     return result;

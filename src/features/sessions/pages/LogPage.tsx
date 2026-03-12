@@ -30,6 +30,7 @@ const TASK_TYPE_OPTIONS: { value: TaskType; label: string }[] = [
   { value: 'research', label: 'Research' },
   { value: 'automation', label: 'Automatisering' },
   { value: 'ideation', label: 'Ideeën' },
+  { value: 'ontwikkelen', label: 'Ontwikkelen' },
   { value: 'other', label: 'Overig' },
 ];
 
@@ -65,6 +66,7 @@ export function LogPage() {
       whatWentWrong: '',
       resolution: '',
       reflectionNotes: '',
+      aiTools: [],
     },
   });
 
@@ -79,10 +81,10 @@ export function LogPage() {
         whatWentWrong: prefill.whatWentWrong ?? '',
         resolution: prefill.resolution ?? '',
         reflectionNotes: prefill.reflectionNotes ?? '',
-        aiTool: prefill.aiTool,
+        aiTools: prefill.aiTools ?? ((prefill as any).aiTool ? [(prefill as any).aiTool as AIToolType] : []),
         taskType: prefill.taskType,
       });
-      if (prefill.whatWentWrong || prefill.aiTool || prefill.taskType) {
+      if (prefill.whatWentWrong || prefill.aiTools?.length || (prefill as any).aiTool || prefill.taskType) {
         setShowDetails(true);
       }
     }
@@ -98,6 +100,7 @@ export function LogPage() {
         whatWentWrong: data.whatWentWrong?.trim() || undefined,
         resolution: data.resolution?.trim() || undefined,
         reflectionNotes: data.reflectionNotes?.trim() || undefined,
+        aiTools: data.aiTools?.length ? data.aiTools : undefined,
       });
       await incrementSessionCount();
       setSaveStatus('success');
@@ -248,38 +251,65 @@ export function LogPage() {
                     className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label htmlFor="aiTool" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                      AI-tool
-                    </label>
-                    <select
-                      id="aiTool"
-                      {...register('aiTool')}
-                      className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
-                    >
-                      <option value="">— kies —</option>
-                      {AI_TOOL_OPTIONS.map((o) => (
-                        <option key={o.value} value={o.value}>{o.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="taskType" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                      Taaktype
-                    </label>
-                    <select
-                      id="taskType"
-                      {...register('taskType')}
-                      className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
-                    >
-                      <option value="">— kies —</option>
-                      {TASK_TYPE_OPTIONS.map((o) => (
-                        <option key={o.value} value={o.value}>{o.label}</option>
-                      ))}
-                    </select>
-                  </div>
+
+                {/* AI-tools — multi-select toggle pills */}
+                <div>
+                  <p className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                    AI-tool(s)
+                  </p>
+                  <Controller
+                    name="aiTools"
+                    control={control}
+                    render={({ field }) => {
+                      const selected = field.value ?? [];
+                      return (
+                        <div className="flex flex-wrap gap-1.5">
+                          {AI_TOOL_OPTIONS.map(({ value, label }) => {
+                            const isSelected = selected.includes(value);
+                            return (
+                              <button
+                                key={value}
+                                type="button"
+                                aria-pressed={isSelected}
+                                onClick={() =>
+                                  field.onChange(
+                                    isSelected
+                                      ? selected.filter((t) => t !== value)
+                                      : [...selected, value],
+                                  )
+                                }
+                                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                                  isSelected
+                                    ? 'bg-slate-700 text-white dark:bg-slate-500 dark:text-white'
+                                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
+                                }`}
+                              >
+                                {label}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      );
+                    }}
+                  />
                 </div>
+
+                <div>
+                  <label htmlFor="taskType" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                    Taaktype
+                  </label>
+                  <select
+                    id="taskType"
+                    {...register('taskType')}
+                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                  >
+                    <option value="">— kies —</option>
+                    {TASK_TYPE_OPTIONS.map((o) => (
+                      <option key={o.value} value={o.value}>{o.label}</option>
+                    ))}
+                  </select>
+                </div>
+
                 <div>
                   <label htmlFor="reflectionNotes" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Reflectie

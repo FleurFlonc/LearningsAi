@@ -15,14 +15,15 @@ import { db } from './database';
  *
  * Versiehistorie:
  *   v1 (initieel): sessions + preferences tabellen
+ *   v2: aiTool (enkelvoud) → aiTools (array, multi-entry index)
  *
- * Bij het toevoegen van versie 2:
- *   1. Voeg db.version(2).stores(...).upgrade(...) toe in database.ts
- *   2. Verhoog EXPECTED_VERSION hieronder naar 2
+ * Bij het toevoegen van versie 3:
+ *   1. Voeg db.version(3).stores(...).upgrade(...) toe in database.ts
+ *   2. Verhoog EXPECTED_VERSION hieronder naar 3
  *   3. Documenteer de wijziging in docs/DATA_MODEL.md
  */
 
-const EXPECTED_VERSION = 1;
+const EXPECTED_VERSION = 2;
 
 export async function runMigrations(): Promise<void> {
   // Fase A stub — de structuur is belangrijk, niet de implementatie.

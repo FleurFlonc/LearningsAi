@@ -3,7 +3,7 @@ import { z } from 'zod';
 // Constante arrays voor Zod enum-validatie
 const SESSION_STATUS_VALUES = ['success', 'partial', 'failed'] as const;
 const AI_TOOL_TYPE_VALUES = ['chatgpt', 'claude', 'cursor', 'gemini', 'copilot', 'other'] as const;
-const TASK_TYPE_VALUES = ['debugging', 'prompting', 'writing', 'research', 'automation', 'ideation', 'other'] as const;
+const TASK_TYPE_VALUES = ['debugging', 'prompting', 'writing', 'research', 'automation', 'ideation', 'ontwikkelen', 'other'] as const;
 const PROBLEM_CATEGORY_VALUES = ['prompting', 'technical', 'context', 'output_quality', 'workflow', 'unknown'] as const;
 const RESOLUTION_TYPE_VALUES = ['reprompt', 'more_context', 'changed_tool', 'manual_fix', 'code_fix', 'research', 'other'] as const;
 
@@ -31,7 +31,7 @@ export const SessionSchema = z.object({
   resolution: z.string().optional(),
   reflectionNotes: z.string().optional(),
 
-  aiTool: z.enum(AI_TOOL_TYPE_VALUES).optional(),
+  aiTools: z.array(z.enum(AI_TOOL_TYPE_VALUES)).optional(),
   taskType: z.enum(TASK_TYPE_VALUES).optional(),
   problemCategory: z.enum(PROBLEM_CATEGORY_VALUES).optional(),
   resolutionType: z.enum(RESOLUTION_TYPE_VALUES).optional(),

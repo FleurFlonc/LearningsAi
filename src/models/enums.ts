@@ -18,6 +18,7 @@ export type TaskType =
   | 'research'
   | 'automation'
   | 'ideation'
+  | 'ontwikkelen'
   | 'other';
 
 export type ProblemCategory =

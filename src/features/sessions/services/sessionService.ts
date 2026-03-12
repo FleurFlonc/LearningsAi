@@ -70,7 +70,7 @@ export async function filterSessions(filters: SessionFilters): Promise<LearningS
 
   return allSessions.filter(session => {
     if (filters.status !== undefined && session.status !== filters.status) return false;
-    if (filters.aiTool !== undefined && session.aiTool !== filters.aiTool) return false;
+    if (filters.aiTool !== undefined && !(session.aiTools?.includes(filters.aiTool))) return false;
     if (filters.taskType !== undefined && session.taskType !== filters.taskType) return false;
     if (filters.isFavorite !== undefined && session.isFavorite !== filters.isFavorite) return false;
     return true;

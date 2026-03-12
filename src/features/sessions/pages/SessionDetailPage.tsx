@@ -30,7 +30,7 @@ const TASK_TYPE_OPTIONS: { value: TaskType; label: string }[] = [
   { value: 'debugging', label: 'Debugging' }, { value: 'prompting', label: 'Prompting' },
   { value: 'writing', label: 'Schrijven' }, { value: 'research', label: 'Research' },
   { value: 'automation', label: 'Automatisering' }, { value: 'ideation', label: 'Ideeën' },
-  { value: 'other', label: 'Overig' },
+  { value: 'ontwikkelen', label: 'Ontwikkelen' }, { value: 'other', label: 'Overig' },
 ];
 
 const Stars = ({ value }: { value: number }) => (
@@ -61,7 +61,7 @@ export function SessionDetailPage() {
         whatWentWrong: session.whatWentWrong ?? '',
         resolution: session.resolution ?? '',
         reflectionNotes: session.reflectionNotes ?? '',
-        aiTool: session.aiTool,
+        aiTools: session.aiTools ?? ((session as any).aiTool ? [(session as any).aiTool as AIToolType] : []),
         taskType: session.taskType,
         learningValue: session.learningValue,
         frustrationLevel: session.frustrationLevel,
@@ -81,6 +81,7 @@ export function SessionDetailPage() {
         whatWentWrong: data.whatWentWrong?.trim() || undefined,
         resolution: data.resolution?.trim() || undefined,
         reflectionNotes: data.reflectionNotes?.trim() || undefined,
+        aiTools: data.aiTools?.length ? data.aiTools : undefined,
       });
       setIsEditing(false);
     } finally {
@@ -108,7 +109,7 @@ export function SessionDetailPage() {
         <button
           onClick={() => navigate('/lessons')}
           className="flex items-center gap-1 text-sm text-stone-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-          aria-label="Terug naar lessen"
+          aria-label="Terug naar learnings"
         >
           <ArrowLeft className="w-4 h-4" aria-hidden="true" />
           Terug
@@ -146,7 +147,7 @@ export function SessionDetailPage() {
               )} />
             </div>
             <div className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-800/50 rounded-xl p-4">
-              <label htmlFor="edit-lesson" className="block text-sm font-bold text-amber-900 dark:text-amber-200 mb-1.5">Les</label>
+              <label htmlFor="edit-lesson" className="block text-sm font-bold text-amber-900 dark:text-amber-200 mb-1.5">Learning</label>
               <textarea id="edit-lesson" rows={3} {...register('lessonLearned')} className={`${fieldClass} resize-none`} />
               {errors.lessonLearned && <p role="alert" className="mt-1 text-xs text-red-600">{errors.lessonLearned.message}</p>}
             </div>
@@ -158,21 +159,53 @@ export function SessionDetailPage() {
               <label htmlFor="edit-resolution" className={labelClass}>Oplossing</label>
               <textarea id="edit-resolution" rows={2} {...register('resolution')} className={`${fieldClass} resize-none`} />
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label htmlFor="edit-tool" className={labelClass}>AI-tool</label>
-                <select id="edit-tool" {...register('aiTool')} className={fieldClass}>
-                  <option value="">— kies —</option>
-                  {AI_TOOL_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                </select>
-              </div>
-              <div>
-                <label htmlFor="edit-task-type" className={labelClass}>Taaktype</label>
-                <select id="edit-task-type" {...register('taskType')} className={fieldClass}>
-                  <option value="">— kies —</option>
-                  {TASK_TYPE_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                </select>
-              </div>
+
+            {/* AI-tools — multi-select toggle pills */}
+            <div>
+              <p className={labelClass}>AI-tool(s)</p>
+              <Controller
+                name="aiTools"
+                control={control}
+                render={({ field }) => {
+                  const selected = field.value ?? [];
+                  return (
+                    <div className="flex flex-wrap gap-1.5">
+                      {AI_TOOL_OPTIONS.map(({ value, label }) => {
+                        const isSelected = selected.includes(value);
+                        return (
+                          <button
+                            key={value}
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={() =>
+                              field.onChange(
+                                isSelected
+                                  ? selected.filter((t) => t !== value)
+                                  : [...selected, value],
+                              )
+                            }
+                            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                              isSelected
+                                ? 'bg-slate-700 text-white dark:bg-slate-500 dark:text-white'
+                                : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  );
+                }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="edit-task-type" className={labelClass}>Taaktype</label>
+              <select id="edit-task-type" {...register('taskType')} className={fieldClass}>
+                <option value="">— kies —</option>
+                {TASK_TYPE_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+              </select>
             </div>
             <div>
               <label htmlFor="edit-reflection" className={labelClass}>Reflectie</label>
@@ -195,9 +228,9 @@ export function SessionDetailPage() {
       ) : (
         /* ── VIEW MODE ── */
         <div className="space-y-5">
-          {/* Lesson — most prominent */}
+          {/* Learning — most prominent */}
           <div className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-800/50 rounded-xl p-5">
-            <p className="text-xs font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-wide mb-2">Les</p>
+            <p className="text-xs font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-wide mb-2">Learning</p>
             <p className="text-base font-medium text-slate-900 dark:text-slate-100 leading-relaxed">
               {session.lessonLearned}
             </p>
@@ -206,7 +239,7 @@ export function SessionDetailPage() {
           {/* Badges + meta */}
           <div className="flex flex-wrap items-center gap-2 text-xs text-stone-400 dark:text-slate-500">
             <StatusBadge status={session.status} />
-            {session.aiTool && <AIToolBadge tool={session.aiTool} />}
+            {session.aiTools?.map((t) => <AIToolBadge key={t} tool={t} />)}
             {session.taskType && (
               <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
                 {TASK_TYPE_OPTIONS.find((o) => o.value === session.taskType)?.label ?? session.taskType}

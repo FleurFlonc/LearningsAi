@@ -41,17 +41,19 @@ export function calculateSuccessRate(sessions: LearningSession[]): number {
 }
 
 export function getMostUsedTool(sessions: LearningSession[]): AIToolType | null {
-  const withTool = sessions.filter(s => s.aiTool !== undefined);
-  if (withTool.length === 0) return null;
+  const counts: Record<string, number> = {};
 
-  const counts = withTool.reduce<Record<string, number>>((acc, s) => {
-    const tool = s.aiTool as string;
-    acc[tool] = (acc[tool] ?? 0) + 1;
-    return acc;
-  }, {});
+  for (const s of sessions) {
+    for (const tool of s.aiTools ?? []) {
+      counts[tool] = (counts[tool] ?? 0) + 1;
+    }
+  }
 
-  const topEntry = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
-  return topEntry ? (topEntry[0] as AIToolType) : null;
+  const entries = Object.entries(counts);
+  if (entries.length === 0) return null;
+
+  const topEntry = entries.sort((a, b) => b[1] - a[1])[0];
+  return topEntry[0] as AIToolType;
 }
 
 export function getTopTaskType(sessions: LearningSession[]): TaskType | null {

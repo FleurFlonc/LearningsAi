@@ -21,7 +21,7 @@ export interface LearningSession {
   whatWentWrong?: string;
   resolution?: string;
   reflectionNotes?: string;
-  aiTool?: AIToolType;
+  aiTools?: AIToolType[];
   taskType?: TaskType;
   problemCategory?: ProblemCategory;
   resolutionType?: ResolutionType;

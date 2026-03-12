@@ -11,7 +11,7 @@ import type { UserPreference } from '@/models/preferences';
  * - Verhoog het versienummer bij elke structuurwijziging
  * - Gebruik de Dexie upgrade() functie voor datamigraties
  *
- * Huidig versienummer: 1
+ * Huidig versienummer: 2
  */
 export class AILearningLogDB extends Dexie {
   sessions!: Table<LearningSession, string>;
@@ -28,16 +28,19 @@ export class AILearningLogDB extends Dexie {
       preferences: 'id',
     });
 
-    // Voorbeeld van een toekomstige migratie (versie 2):
-    //
-    // this.version(2).stores({
-    //   sessions: 'id, createdAt, status, aiTool, taskType, isFavorite, newIndexField',
-    //   preferences: 'id',
-    // }).upgrade(async (tx) => {
-    //   await tx.table('sessions').toCollection().modify((session) => {
-    //     session.newField = 'defaultValue';
-    //   });
-    // });
+    // Versie 2 — aiTool (enkelvoud) vervangen door aiTools (array, multi-entry index)
+    // *aiTools = multi-entry index: Dexie indexeert elk element afzonderlijk
+    this.version(2).stores({
+      sessions: 'id, createdAt, status, *aiTools, taskType, isFavorite',
+      preferences: 'id',
+    }).upgrade(async (tx) => {
+      await tx.table('sessions').toCollection().modify((session: any) => {
+        if (session.aiTool !== undefined) {
+          session.aiTools = [session.aiTool];
+        }
+        delete session.aiTool;
+      });
+    });
   }
 }
 

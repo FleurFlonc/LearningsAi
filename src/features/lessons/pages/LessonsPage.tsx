@@ -29,6 +29,7 @@ const TASK_CHIPS: FilterChip<TaskType>[] = [
   { value: 'research', label: 'Research' },
   { value: 'automation', label: 'Automatisering' },
   { value: 'ideation', label: 'Ideeën' },
+  { value: 'ontwikkelen', label: 'Ontwikkelen' },
   { value: 'other', label: 'Overig' },
 ];
 
@@ -98,7 +99,7 @@ export function LessonsPage() {
 
   return (
     <div className="max-w-lg mx-auto px-4 pt-4 pb-6">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">Lessen</h1>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">Learnings</h1>
 
       {/* Search */}
       <div className="relative mb-3">
@@ -108,7 +109,7 @@ export function LessonsPage() {
         />
         <input
           type="search"
-          placeholder="Zoek in lessen, taken…"
+          placeholder="Zoek in learnings, taken…"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           aria-label="Zoek sessies"
@@ -126,7 +127,7 @@ export function LessonsPage() {
       {/* Results */}
       {lessons.length === 0 ? (
         <EmptyState
-          title="Geen lessen gevonden"
+          title="Geen learnings gevonden"
           description="Probeer andere zoektermen of filters."
           actionLabel={hasActiveFilters ? 'Filters wissen' : undefined}
           onAction={

@@ -34,7 +34,7 @@ export function SessionCard({ session, onClick }: SessionCardProps) {
       {/* Meta row */}
       <div className="mt-2.5 flex items-center gap-2 flex-wrap">
         <StatusBadge status={session.status} />
-        {session.aiTool && <AIToolBadge tool={session.aiTool} />}
+        {session.aiTools?.map((t) => <AIToolBadge key={t} tool={t} />)}
         <span className="ml-auto text-xs text-stone-400 dark:text-slate-500 shrink-0">
           {formatSessionDate(session.createdAt)}
         </span>

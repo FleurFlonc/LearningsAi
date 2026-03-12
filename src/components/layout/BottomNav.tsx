@@ -3,7 +3,7 @@ import { PenLine, BookOpen, BarChart2, Settings } from 'lucide-react';
 
 const navItems = [
   { to: '/log', icon: PenLine, label: 'Log' },
-  { to: '/lessons', icon: BookOpen, label: 'Lessen' },
+  { to: '/lessons', icon: BookOpen, label: 'Learnings' },
   { to: '/stats', icon: BarChart2, label: 'Statistieken' },
   { to: '/settings', icon: Settings, label: 'Instellingen' },
 ] as const;
