@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
-    "deploy": "npm run build && cp dist/index.html . && rm -rf assets && cp -r dist/assets assets && cp dist/registerSW.js dist/sw.js dist/manifest.webmanifest dist/workbox-*.js ."
+    "deploy": "cp index.source.html index.html && npm run build && cp dist/index.html . && rm -rf assets && cp -r dist/assets assets && cp dist/registerSW.js dist/sw.js dist/manifest.webmanifest dist/workbox-*.js ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
