@@ -53,8 +53,8 @@ function FilterRow<T extends string>({
             aria-pressed={isActive}
             className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
               isActive
-                ? 'bg-neutral-900 text-white dark:bg-teal-700'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
+                ? 'bg-sage text-white'
+                : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-600'
             }`}
           >
             {label}
@@ -99,12 +99,12 @@ export function LessonsPage() {
 
   return (
     <div className="max-w-lg mx-auto px-4 pt-4 pb-6">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">Learnings</h1>
+      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">Learnings</h1>
 
       {/* Search */}
       <div className="relative mb-3">
         <Search
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 dark:text-slate-500"
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 dark:text-neutral-500"
           aria-hidden="true"
         />
         <input
@@ -113,7 +113,7 @@ export function LessonsPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           aria-label="Zoek sessies"
-          className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500"
+          className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100 dark:placeholder-neutral-500"
         />
       </div>
 

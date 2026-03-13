@@ -17,18 +17,18 @@ interface StepProps {
 function Step1({ onNext }: StepProps) {
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-16 h-16 rounded-2xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center mb-6">
+      <div className="w-16 h-16 rounded-2xl bg-sage-subtle dark:bg-sage/10 flex items-center justify-center mb-6">
         <span className="text-3xl" aria-hidden="true">📖</span>
       </div>
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
         Welkom bij AI Learning Log
       </h1>
-      <p className="text-base text-stone-600 dark:text-slate-400 leading-relaxed max-w-sm">
+      <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
         Deze app helpt je om systematisch bij te houden wat je leert van AI-sessies. Zo leer je sneller en vergeet je minder.
       </p>
       <button
         onClick={onNext}
-        className="mt-8 w-full max-w-xs py-3.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
+        className="mt-8 w-full max-w-xs py-3.5 bg-sage hover:bg-sage-hover text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
       >
         Volgende
         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -40,27 +40,27 @@ function Step1({ onNext }: StepProps) {
 function Step2({ onNext }: StepProps) {
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-16 h-16 rounded-2xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center mb-6">
+      <div className="w-16 h-16 rounded-2xl bg-sage-subtle dark:bg-sage/10 flex items-center justify-center mb-6">
         <span className="text-3xl" aria-hidden="true">⚡</span>
       </div>
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
         Wat is een sessie?
       </h1>
-      <p className="text-base text-stone-600 dark:text-slate-400 leading-relaxed max-w-sm">
+      <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
         Een sessie is een afgeronde werkeenheid waarbij je een specifieke taak met een AI-tool hebt geprobeerd — of dat nu gelukt is of niet. Één gerichte poging of een reeks prompts rondom dezelfde taak.
       </p>
 
       {/* Example card */}
-      <div className="mt-6 w-full max-w-sm text-left bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4">
+      <div className="mt-6 w-full max-w-sm text-left bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
         <div className="flex items-start gap-2 mb-2">
           <span className="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
-          <p className="text-xs text-stone-500 dark:text-slate-400">{EXAMPLE_SESSION.taskDescription}</p>
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">{EXAMPLE_SESSION.taskDescription}</p>
         </div>
         <div className="pl-4">
           <span className="inline-block mb-1.5 px-2 py-0.5 rounded-md text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400">
             {EXAMPLE_SESSION.status}
           </span>
-          <p className="text-sm font-medium text-slate-900 dark:text-slate-100 leading-snug">
+          <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100 leading-snug">
             {EXAMPLE_SESSION.lessonLearned}
           </p>
         </div>
@@ -68,7 +68,7 @@ function Step2({ onNext }: StepProps) {
 
       <button
         onClick={onNext}
-        className="mt-6 w-full max-w-xs py-3.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
+        className="mt-6 w-full max-w-xs py-3.5 bg-sage hover:bg-sage-hover text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
       >
         Volgende
         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -80,18 +80,18 @@ function Step2({ onNext }: StepProps) {
 function Step3({ onFinish }: { onFinish: () => void }) {
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-16 h-16 rounded-2xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center mb-6">
+      <div className="w-16 h-16 rounded-2xl bg-sage-subtle dark:bg-sage/10 flex items-center justify-center mb-6">
         <span className="text-3xl" aria-hidden="true">🚀</span>
       </div>
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
         Klaar om te starten
       </h1>
-      <p className="text-base text-stone-600 dark:text-slate-400 leading-relaxed max-w-sm">
+      <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
         Log je eerste sessie. Het invullen duurt minder dan 2 minuten.
       </p>
       <button
         onClick={onFinish}
-        className="mt-8 w-full max-w-xs py-3.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
+        className="mt-8 w-full max-w-xs py-3.5 bg-sage hover:bg-sage-hover text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
       >
         Log mijn eerste sessie
         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -117,14 +117,14 @@ export function OnboardingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-slate-900 flex flex-col items-center justify-center px-6 py-10">
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 flex flex-col items-center justify-center px-6 py-10">
       {/* Progress dots */}
       <div className="flex gap-2 mb-10" aria-label={`Stap ${step + 1} van 3`} role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={3}>
         {[0, 1, 2].map((i) => (
           <span
             key={i}
             className={`w-2 h-2 rounded-full transition-colors ${
-              i === step ? 'bg-teal-700 dark:bg-teal-400' : 'bg-stone-300 dark:bg-slate-600'
+              i === step ? 'bg-sage' : 'bg-neutral-300 dark:bg-neutral-600'
             }`}
             aria-hidden="true"
           />

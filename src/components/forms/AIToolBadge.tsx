@@ -15,7 +15,7 @@ const toolLabels: Record<AIToolType, string> = {
 
 export function AIToolBadge({ tool }: AIToolBadgeProps) {
   return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+    <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-neutral-100 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300">
       {toolLabels[tool]}
     </span>
   );

@@ -12,7 +12,7 @@ export function SessionCard({ session, onClick }: SessionCardProps) {
   return (
     <button
       onClick={onClick}
-      className="w-full text-left bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4 hover:border-stone-300 hover:shadow-md dark:hover:border-slate-500 transition-all"
+      className="w-full text-left bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] hover:shadow-md transition-all"
     >
       {/* Status dot + lesson */}
       <div className="flex gap-3 items-start">
@@ -21,12 +21,12 @@ export function SessionCard({ session, onClick }: SessionCardProps) {
             session.status === 'success'
               ? 'bg-green-500'
               : session.status === 'partial'
-              ? 'bg-amber-500'
+              ? 'bg-yellow-500'
               : 'bg-red-500'
           }`}
           aria-hidden="true"
         />
-        <p className="text-sm font-medium text-stone-900 dark:text-slate-100 line-clamp-2 flex-1">
+        <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100 line-clamp-2 flex-1">
           {session.lessonLearned}
         </p>
       </div>
@@ -35,7 +35,7 @@ export function SessionCard({ session, onClick }: SessionCardProps) {
       <div className="mt-2.5 flex items-center gap-2 flex-wrap">
         <StatusBadge status={session.status} />
         {session.aiTools?.map((t) => <AIToolBadge key={t} tool={t} />)}
-        <span className="ml-auto text-xs text-stone-400 dark:text-slate-500 shrink-0">
+        <span className="ml-auto text-xs text-neutral-400 dark:text-neutral-500 shrink-0">
           {formatSessionDate(session.createdAt)}
         </span>
       </div>

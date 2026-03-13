@@ -32,8 +32,8 @@ interface TooltipProps {
 function LineTooltip({ active, payload, label }: TooltipProps) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-neutral-900 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
-      <p className="text-slate-400 mb-0.5">{label}</p>
+    <div className="bg-neutral-900 text-neutral-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
+      <p className="text-neutral-400 mb-0.5">{label}</p>
       <p className="font-semibold">{payload[0].value} sessies</p>
     </div>
   );
@@ -42,7 +42,7 @@ function LineTooltip({ active, payload, label }: TooltipProps) {
 function BarTooltip({ active, payload }: TooltipProps) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-neutral-900 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
+    <div className="bg-neutral-900 text-neutral-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
       <p className="font-semibold">{payload[0].value} sessies</p>
     </div>
   );
@@ -51,7 +51,7 @@ function BarTooltip({ active, payload }: TooltipProps) {
 function PieTooltip({ active, payload }: TooltipProps) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-neutral-900 text-slate-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
+    <div className="bg-neutral-900 text-neutral-100 text-xs px-3 py-2 rounded-lg shadow-lg border border-neutral-700">
       <p>
         {payload[0].name}: <span className="font-semibold">{payload[0].value}</span>
       </p>
@@ -63,8 +63,8 @@ function PieTooltip({ active, payload }: TooltipProps) {
 
 function ChartCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4">
-      <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">{title}</h3>
+    <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+      <h3 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-4">{title}</h3>
       {children}
     </div>
   );
@@ -106,11 +106,11 @@ export function StatsPage() {
 
   const gridColor = 'rgba(148,163,184,0.15)';
   const axisColor = '#94a3b8';
-  const accentColor = '#0F766E';
+  const accentColor = '#6B8F71';
 
   return (
     <div className="max-w-lg mx-auto px-4 pt-4 pb-8 md:max-w-2xl">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-5">Statistieken</h1>
+      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-5">Statistieken</h1>
 
       {/* ── Six stat cards ── */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 mb-8">
@@ -152,13 +152,13 @@ export function StatsPage() {
 
       {/* ── Charts section ── */}
       {!showCharts ? (
-        <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-6 text-center">
-          <p className="text-sm text-stone-500 dark:text-slate-400 mb-3">
+        <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-6 text-center shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+          <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-3">
             Log minimaal 3 sessies om grafieken te zien.
           </p>
           <button
             onClick={() => navigate('/log')}
-            className="px-5 py-2 bg-neutral-900 hover:bg-neutral-800 text-white text-sm font-semibold rounded-lg transition-colors dark:bg-teal-700 dark:hover:bg-teal-600"
+            className="px-5 py-2 bg-sage hover:bg-sage-hover text-white text-sm font-semibold rounded-lg transition-colors"
           >
             Log een sessie
           </button>

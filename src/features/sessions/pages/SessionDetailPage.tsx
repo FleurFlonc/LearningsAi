@@ -16,10 +16,10 @@ type FormValues = z.infer<typeof CreateSessionSchema>;
 
 const STATUS_OPTIONS: { value: SessionStatus; label: string; color: string }[] = [
   { value: 'success', label: 'Gelukt', color: 'bg-green-500 text-white' },
-  { value: 'partial', label: 'Gedeeltelijk', color: 'bg-amber-500 text-white' },
+  { value: 'partial', label: 'Gedeeltelijk', color: 'bg-yellow-500 text-white' },
   { value: 'failed', label: 'Mislukt', color: 'bg-red-500 text-white' },
 ];
-const INACTIVE_STATUS = 'bg-stone-100 text-stone-600 dark:bg-slate-700 dark:text-slate-300';
+const INACTIVE_STATUS = 'bg-neutral-100 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300';
 
 const AI_TOOL_OPTIONS: { value: AIToolType; label: string }[] = [
   { value: 'chatgpt', label: 'ChatGPT' }, { value: 'claude', label: 'Claude' },
@@ -34,7 +34,7 @@ const TASK_TYPE_OPTIONS: { value: TaskType; label: string }[] = [
 ];
 
 const Stars = ({ value }: { value: number }) => (
-  <span className="text-amber-400">{'★'.repeat(value)}{'☆'.repeat(5 - value)}</span>
+  <span className="text-sage">{'★'.repeat(value)}{'☆'.repeat(5 - value)}</span>
 );
 
 export function SessionDetailPage() {
@@ -99,8 +99,8 @@ export function SessionDetailPage() {
   };
 
   const fieldClass =
-    'w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100';
-  const labelClass = 'block text-xs font-semibold text-stone-500 dark:text-slate-400 uppercase tracking-wide mb-1';
+    'w-full px-3 py-2 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100';
+  const labelClass = 'block text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wide mb-1';
 
   return (
     <div className="max-w-lg mx-auto px-4 pt-4 pb-10">
@@ -108,7 +108,7 @@ export function SessionDetailPage() {
       <div className="flex items-center justify-between mb-5">
         <button
           onClick={() => navigate('/lessons')}
-          className="flex items-center gap-1 text-sm text-stone-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+          className="flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
           aria-label="Terug naar learnings"
         >
           <ArrowLeft className="w-4 h-4" aria-hidden="true" />
@@ -117,7 +117,7 @@ export function SessionDetailPage() {
         {!isEditing && (
           <button
             onClick={() => setIsEditing(true)}
-            className="flex items-center gap-1.5 text-sm font-medium text-teal-700 hover:text-teal-800 dark:text-teal-400"
+            className="flex items-center gap-1.5 text-sm font-medium text-sage hover:text-sage-hover"
             aria-label="Sessie bewerken"
           >
             <Pencil className="w-3.5 h-3.5" aria-hidden="true" />
@@ -146,8 +146,8 @@ export function SessionDetailPage() {
                 </div>
               )} />
             </div>
-            <div className="bg-teal-50/60 dark:bg-teal-950/20 border border-teal-200/70 dark:border-teal-800/50 rounded-xl p-4">
-              <label htmlFor="edit-lesson" className="block text-sm font-bold text-teal-900 dark:text-teal-200 mb-1.5">Learning</label>
+            <div className="bg-sage-subtle/60 dark:bg-sage/10 border border-sage/20 dark:border-sage/20 rounded-xl p-4">
+              <label htmlFor="edit-lesson" className="block text-sm font-bold text-neutral-900 dark:text-neutral-100 mb-1.5">Learning</label>
               <textarea id="edit-lesson" rows={3} {...register('lessonLearned')} className={`${fieldClass} resize-none`} />
               {errors.lessonLearned && <p role="alert" className="mt-1 text-xs text-red-600">{errors.lessonLearned.message}</p>}
             </div>
@@ -186,8 +186,8 @@ export function SessionDetailPage() {
                             }
                             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                               isSelected
-                                ? 'bg-slate-700 text-white dark:bg-slate-500 dark:text-white'
-                                : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
+                                ? 'bg-neutral-900 text-white dark:bg-sage dark:text-white'
+                                : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-600'
                             }`}
                           >
                             {label}
@@ -213,12 +213,12 @@ export function SessionDetailPage() {
             </div>
             <div className="flex gap-3 pt-2">
               <button type="submit" disabled={isSaving}
-                className="flex-1 py-3 bg-neutral-900 hover:bg-neutral-800 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600">
+                className="flex-1 py-3 bg-sage hover:bg-sage-hover disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
                 <Check className="w-4 h-4" aria-hidden="true" />
                 {isSaving ? 'Opslaan…' : 'Opslaan'}
               </button>
               <button type="button" onClick={() => setIsEditing(false)}
-                className="flex-1 py-3 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold rounded-xl transition-colors dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 flex items-center justify-center gap-2">
+                className="flex-1 py-3 bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-semibold rounded-xl transition-colors dark:bg-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-600 flex items-center justify-center gap-2">
                 <X className="w-4 h-4" aria-hidden="true" />
                 Annuleren
               </button>
@@ -229,19 +229,19 @@ export function SessionDetailPage() {
         /* ── VIEW MODE ── */
         <div className="space-y-5">
           {/* Learning — most prominent */}
-          <div className="bg-teal-50/60 dark:bg-teal-950/20 border border-teal-200/70 dark:border-teal-800/50 rounded-xl p-5">
-            <p className="text-xs font-semibold text-teal-700 dark:text-teal-400 uppercase tracking-wide mb-2">Learning</p>
-            <p className="text-base font-medium text-slate-900 dark:text-slate-100 leading-relaxed">
+          <div className="bg-sage-subtle/60 dark:bg-sage/10 border border-sage/20 dark:border-sage/20 rounded-xl p-5">
+            <p className="text-xs font-semibold text-sage uppercase tracking-wide mb-2">Learning</p>
+            <p className="text-base font-medium text-neutral-900 dark:text-neutral-100 leading-relaxed">
               {session.lessonLearned}
             </p>
           </div>
 
           {/* Badges + meta */}
-          <div className="flex flex-wrap items-center gap-2 text-xs text-stone-400 dark:text-slate-500">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-400 dark:text-neutral-500">
             <StatusBadge status={session.status} />
             {session.aiTools?.map((t) => <AIToolBadge key={t} tool={t} />)}
             {session.taskType && (
-              <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+              <span className="px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300">
                 {TASK_TYPE_OPTIONS.find((o) => o.value === session.taskType)?.label ?? session.taskType}
               </span>
             )}
@@ -253,25 +253,25 @@ export function SessionDetailPage() {
           {/* taskDescription */}
           <div>
             <p className={labelClass}>Taakbeschrijving</p>
-            <p className="text-sm text-slate-700 dark:text-slate-300">{session.taskDescription}</p>
+            <p className="text-sm text-neutral-700 dark:text-neutral-300">{session.taskDescription}</p>
           </div>
 
           {session.whatWentWrong && (
             <div>
               <p className={labelClass}>Wat ging er mis?</p>
-              <p className="text-sm text-slate-700 dark:text-slate-300">{session.whatWentWrong}</p>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">{session.whatWentWrong}</p>
             </div>
           )}
           {session.resolution && (
             <div>
               <p className={labelClass}>Oplossing</p>
-              <p className="text-sm text-slate-700 dark:text-slate-300">{session.resolution}</p>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">{session.resolution}</p>
             </div>
           )}
           {session.reflectionNotes && (
             <div>
               <p className={labelClass}>Reflectie</p>
-              <p className="text-sm text-slate-700 dark:text-slate-300">{session.reflectionNotes}</p>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">{session.reflectionNotes}</p>
             </div>
           )}
 
@@ -294,7 +294,7 @@ export function SessionDetailPage() {
           {session.durationMinutes && (
             <div>
               <p className={labelClass}>Tijdsduur</p>
-              <p className="text-sm text-slate-700 dark:text-slate-300">{session.durationMinutes} minuten</p>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">{session.durationMinutes} minuten</p>
             </div>
           )}
 
@@ -302,7 +302,7 @@ export function SessionDetailPage() {
           <div className="flex gap-3 pt-2">
             <button
               onClick={handleDuplicate}
-              className="flex-1 flex items-center justify-center gap-2 py-3 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-semibold rounded-xl transition-colors dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
+              className="flex-1 flex items-center justify-center gap-2 py-3 bg-neutral-100 hover:bg-neutral-200 text-neutral-700 text-sm font-semibold rounded-xl transition-colors dark:bg-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-600"
             >
               <Copy className="w-4 h-4" aria-hidden="true" />
               Dupliceer
@@ -331,7 +331,7 @@ export function SessionDetailPage() {
                 </button>
                 <button
                   onClick={() => setShowDeleteConfirm(false)}
-                  className="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-semibold rounded-lg transition-colors dark:bg-slate-700 dark:text-slate-200"
+                  className="flex-1 py-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-700 text-sm font-semibold rounded-lg transition-colors dark:bg-neutral-700 dark:text-neutral-200"
                 >
                   Annuleren
                 </button>

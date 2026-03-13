@@ -36,11 +36,11 @@ const TASK_TYPE_OPTIONS: { value: TaskType; label: string }[] = [
 
 const STATUS_OPTIONS: { value: SessionStatus; label: string; color: string }[] = [
   { value: 'success', label: 'Gelukt', color: 'bg-green-500 text-white' },
-  { value: 'partial', label: 'Gedeeltelijk', color: 'bg-amber-500 text-white' },
+  { value: 'partial', label: 'Gedeeltelijk', color: 'bg-yellow-500 text-white' },
   { value: 'failed', label: 'Mislukt', color: 'bg-red-500 text-white' },
 ];
 
-const INACTIVE_STATUS = 'bg-stone-100 text-stone-600 dark:bg-slate-700 dark:text-slate-300';
+const INACTIVE_STATUS = 'bg-neutral-100 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300';
 
 export function LogPage() {
   const navigate = useNavigate();
@@ -125,7 +125,7 @@ export function LogPage() {
     <div className="max-w-lg mx-auto px-4 pt-4 pb-6">
       {/* Header */}
       <div className="mb-5">
-        <p className="text-xs font-semibold text-stone-400 dark:text-slate-500 uppercase tracking-widest">
+        <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
           AI Learning Log
         </p>
         <h1 className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">
@@ -139,7 +139,7 @@ export function LogPage() {
           <div>
             <label
               htmlFor="taskDescription"
-              className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5"
+              className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-1.5"
             >
               Wat probeerde je te doen?
             </label>
@@ -148,7 +148,7 @@ export function LogPage() {
               rows={2}
               {...register('taskDescription')}
               placeholder="Beschrijf de taak in één of twee zinnen"
-              className="w-full px-3 py-2.5 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500"
+              className="w-full px-3 py-2.5 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent resize-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100 dark:placeholder-neutral-500"
             />
             {errors.taskDescription && (
               <p role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400">
@@ -159,7 +159,7 @@ export function LogPage() {
 
           {/* status */}
           <div>
-            <p className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">
+            <p className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-1.5">
               Hoe liep het af?
             </p>
             <Controller
@@ -191,10 +191,10 @@ export function LogPage() {
           </div>
 
           {/* lessonLearned — visually prominent */}
-          <div className="bg-teal-50/60 dark:bg-teal-950/20 border border-teal-200/70 dark:border-teal-800/50 rounded-xl p-4">
+          <div className="bg-sage-subtle/60 dark:bg-sage/10 border border-sage/20 dark:border-sage/20 rounded-xl p-4">
             <label
               htmlFor="lessonLearned"
-              className="block text-sm font-bold text-teal-900 dark:text-teal-200 mb-1.5"
+              className="block text-sm font-bold text-neutral-900 dark:text-neutral-100 mb-1.5"
             >
               Wat is de les?
             </label>
@@ -203,7 +203,7 @@ export function LogPage() {
               rows={3}
               {...register('lessonLearned')}
               placeholder="Wat neem je mee naar de volgende keer?"
-              className="w-full px-3 py-2.5 rounded-xl border border-teal-200 bg-white/80 text-sm text-slate-900 placeholder-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800/60 dark:border-teal-700/60 dark:text-slate-100 dark:placeholder-teal-700"
+              className="w-full px-3 py-2.5 rounded-xl border border-neutral-200 bg-white/80 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent resize-none dark:bg-neutral-800/60 dark:border-neutral-700 dark:text-neutral-100 dark:placeholder-neutral-600"
             />
             {errors.lessonLearned && (
               <p role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400">
@@ -213,11 +213,11 @@ export function LogPage() {
           </div>
 
           {/* Expandable extra fields */}
-          <div className="border-t border-stone-200 dark:border-slate-700 pt-4">
+          <div className="border-t border-neutral-200 dark:border-neutral-700 pt-4">
             <button
               type="button"
               onClick={() => setShowDetails(!showDetails)}
-              className="flex items-center gap-1.5 text-sm text-stone-500 dark:text-slate-400 hover:text-stone-700 dark:hover:text-slate-200 transition-colors"
+              className="flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
               aria-expanded={showDetails}
             >
               <ChevronDown
@@ -230,31 +230,31 @@ export function LogPage() {
             {showDetails && (
               <div className="mt-4 space-y-4">
                 <div>
-                  <label htmlFor="whatWentWrong" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="whatWentWrong" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
                     Wat ging er mis?
                   </label>
                   <textarea
                     id="whatWentWrong"
                     rows={2}
                     {...register('whatWentWrong')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent resize-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100"
                   />
                 </div>
                 <div>
-                  <label htmlFor="resolution" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="resolution" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
                     Hoe heb je het opgelost?
                   </label>
                   <textarea
                     id="resolution"
                     rows={2}
                     {...register('resolution')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent resize-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100"
                   />
                 </div>
 
                 {/* AI-tools — multi-select toggle pills */}
                 <div>
-                  <p className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                  <p className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">
                     AI-tool(s)
                   </p>
                   <Controller
@@ -280,8 +280,8 @@ export function LogPage() {
                                 }
                                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                                   isSelected
-                                    ? 'bg-slate-700 text-white dark:bg-slate-500 dark:text-white'
-                                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
+                                    ? 'bg-neutral-900 text-white dark:bg-sage dark:text-white'
+                                    : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-600'
                                 }`}
                               >
                                 {label}
@@ -295,13 +295,13 @@ export function LogPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="taskType" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="taskType" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
                     Taaktype
                   </label>
                   <select
                     id="taskType"
                     {...register('taskType')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100"
                   >
                     <option value="">— kies —</option>
                     {TASK_TYPE_OPTIONS.map((o) => (
@@ -311,14 +311,14 @@ export function LogPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="reflectionNotes" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="reflectionNotes" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
                     Reflectie
                   </label>
                   <textarea
                     id="reflectionNotes"
                     rows={2}
                     {...register('reflectionNotes')}
-                    className="w-full px-3 py-2 rounded-xl border border-stone-200 bg-white text-sm text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+                    className="w-full px-3 py-2 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent resize-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100"
                   />
                 </div>
               </div>
@@ -329,7 +329,7 @@ export function LogPage() {
           <button
             type="submit"
             disabled={saveStatus === 'saving' || saveStatus === 'success'}
-            className="w-full py-3.5 bg-neutral-900 hover:bg-neutral-800 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
+            className="w-full py-3.5 bg-sage hover:bg-sage-hover disabled:opacity-60 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
           >
             {saveStatus === 'success' ? (
               <>

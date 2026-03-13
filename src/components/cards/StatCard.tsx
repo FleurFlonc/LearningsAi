@@ -9,18 +9,18 @@ interface StatCardProps {
 
 export function StatCard({ label, value, icon, sublabel }: StatCardProps) {
   return (
-    <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4">
+    <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
       <div className="flex items-start justify-between gap-2">
-        <p className="text-xs font-medium text-stone-500 dark:text-slate-400 uppercase tracking-wide">
+        <p className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
           {label}
         </p>
         {icon && (
-          <span className="text-teal-600 dark:text-teal-400 shrink-0">{icon}</span>
+          <span className="text-sage shrink-0">{icon}</span>
         )}
       </div>
-      <p className="mt-2 text-2xl font-bold text-slate-900 dark:text-slate-100">{value}</p>
+      <p className="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100">{value}</p>
       {sublabel && (
-        <p className="mt-0.5 text-xs text-stone-400 dark:text-slate-500">{sublabel}</p>
+        <p className="mt-0.5 text-xs text-neutral-400 dark:text-neutral-500">{sublabel}</p>
       )}
     </div>
   );

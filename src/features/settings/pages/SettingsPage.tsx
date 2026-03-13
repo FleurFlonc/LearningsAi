@@ -119,20 +119,20 @@ export function SettingsPage() {
   if (!preferences) return null;
 
   const SectionTitle = ({ children }: { children: string }) => (
-    <h2 className="text-xs font-semibold text-stone-400 dark:text-slate-500 uppercase tracking-widest mb-3">
+    <h2 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-3">
       {children}
     </h2>
   );
 
   return (
     <div className="max-w-lg mx-auto px-4 pt-4 pb-10">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">Instellingen</h1>
+      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">Instellingen</h1>
 
       {/* Theme */}
       <section className="mb-8">
         <SectionTitle>Weergave</SectionTitle>
-        <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4">
-          <p className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-3">Thema</p>
+        <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+          <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200 mb-3">Thema</p>
           <div className="flex gap-2">
             {THEME_OPTIONS.map(({ value, label }) => (
               <button
@@ -141,8 +141,8 @@ export function SettingsPage() {
                 aria-pressed={preferences.themeMode === value}
                 className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                   preferences.themeMode === value
-                    ? 'bg-neutral-900 text-white dark:bg-teal-700'
-                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
+                    ? 'bg-sage text-white'
+                    : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-600'
                 }`}
               >
                 {label}
@@ -155,17 +155,17 @@ export function SettingsPage() {
       {/* Data & backup */}
       <section className="mb-8">
         <SectionTitle>Data & backup</SectionTitle>
-        <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4 space-y-4">
+        <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] space-y-4">
           {/* Storage usage */}
           <div>
             <div className="flex justify-between items-center mb-1.5">
-              <p className="text-sm font-medium text-slate-800 dark:text-slate-200">Opslaggebruik</p>
-              <span className="text-xs text-stone-500 dark:text-slate-400">{percentage}%</span>
+              <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200">Opslaggebruik</p>
+              <span className="text-xs text-neutral-500 dark:text-neutral-400">{percentage}%</span>
             </div>
-            <div className="h-2 bg-stone-100 dark:bg-slate-700 rounded-full overflow-hidden">
+            <div className="h-2 bg-neutral-100 dark:bg-neutral-700 rounded-full overflow-hidden">
               <div
                 className={`h-full rounded-full transition-all ${
-                  percentage >= 80 ? 'bg-red-500' : percentage >= 60 ? 'bg-amber-500' : 'bg-teal-600'
+                  percentage >= 80 ? 'bg-red-500' : percentage >= 60 ? 'bg-yellow-500' : 'bg-sage'
                 }`}
                 style={{ width: `${Math.min(percentage, 100)}%` }}
                 role="progressbar"
@@ -175,7 +175,7 @@ export function SettingsPage() {
                 aria-label={`${percentage}% van beschikbare opslag in gebruik`}
               />
             </div>
-            <p className="mt-1 text-xs text-stone-400 dark:text-slate-500">
+            <p className="mt-1 text-xs text-neutral-400 dark:text-neutral-500">
               {percentage}% van beschikbare opslag in gebruik
             </p>
           </div>
@@ -184,7 +184,7 @@ export function SettingsPage() {
           <div>
             <button
               onClick={handleExport}
-              className="w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold text-sm rounded-xl transition-colors flex items-center justify-center gap-2 dark:bg-teal-700 dark:hover:bg-teal-600"
+              className="w-full py-3 bg-sage hover:bg-sage-hover text-white font-semibold text-sm rounded-xl transition-colors flex items-center justify-center gap-2"
             >
               Exporteer naar JSON
             </button>
@@ -201,8 +201,8 @@ export function SettingsPage() {
       {/* Herstel vanuit backup */}
       <section className="mb-8">
         <SectionTitle>Herstel vanuit backup</SectionTitle>
-        <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4 space-y-3">
-          <p className="text-sm text-stone-500 dark:text-slate-400">
+        <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] space-y-3">
+          <p className="text-sm text-neutral-500 dark:text-neutral-400">
             Importeer een eerder geëxporteerd JSON-bestand om je sessies te herstellen. Bestaande sessies worden niet overschreven.
           </p>
 
@@ -226,7 +226,7 @@ export function SettingsPage() {
           {importState === 'idle' && (
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="w-full py-3 border-2 border-dashed border-stone-300 dark:border-slate-600 hover:border-teal-500 dark:hover:border-teal-500 text-stone-500 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-400 font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 border-2 border-dashed border-neutral-300 dark:border-neutral-600 hover:border-sage dark:hover:border-sage text-neutral-500 dark:text-neutral-400 hover:text-sage dark:hover:text-sage font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2"
             >
               <Upload className="w-4 h-4" aria-hidden="true" />
               Kies een backup-bestand
@@ -236,24 +236,24 @@ export function SettingsPage() {
           {/* Preview */}
           {importState === 'preview' && importPreview && (
             <div className="space-y-3">
-              <div className="bg-stone-50 dark:bg-slate-700/50 rounded-lg px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+              <div className="bg-neutral-50 dark:bg-neutral-700/50 rounded-lg px-4 py-3 space-y-1">
+                <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
                   {importPreview.sessionCount} sessies gevonden
                 </p>
                 {importPreview.dateRange && (
-                  <p className="text-xs text-stone-500 dark:text-slate-400">{importPreview.dateRange}</p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400">{importPreview.dateRange}</p>
                 )}
               </div>
               <div className="flex gap-2">
                 <button
                   onClick={handleImport}
-                  className="flex-1 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold text-sm rounded-xl transition-colors dark:bg-teal-700 dark:hover:bg-teal-600"
+                  className="flex-1 py-2.5 bg-sage hover:bg-sage-hover text-white font-semibold text-sm rounded-xl transition-colors"
                 >
                   Importeer
                 </button>
                 <button
                   onClick={resetImport}
-                  className="px-4 py-2.5 bg-stone-100 dark:bg-slate-700 text-stone-600 dark:text-slate-300 hover:bg-stone-200 dark:hover:bg-slate-600 font-semibold text-sm rounded-xl transition-colors"
+                  className="px-4 py-2.5 bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600 font-semibold text-sm rounded-xl transition-colors"
                 >
                   Annuleer
                 </button>
@@ -263,7 +263,7 @@ export function SettingsPage() {
 
           {/* Importing */}
           {importState === 'importing' && (
-            <p className="text-sm text-stone-500 dark:text-slate-400 text-center py-2">
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 text-center py-2">
               Bezig met importeren…
             </p>
           )}
@@ -282,7 +282,7 @@ export function SettingsPage() {
               </div>
               <button
                 onClick={resetImport}
-                className="w-full py-2.5 bg-stone-100 dark:bg-slate-700 text-stone-600 dark:text-slate-300 hover:bg-stone-200 dark:hover:bg-slate-600 font-semibold text-sm rounded-xl transition-colors"
+                className="w-full py-2.5 bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600 font-semibold text-sm rounded-xl transition-colors"
               >
                 Nog een bestand importeren
               </button>
@@ -294,10 +294,10 @@ export function SettingsPage() {
       {/* Onboarding */}
       <section className="mb-8">
         <SectionTitle>Onboarding</SectionTitle>
-        <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4">
+        <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
           <button
             onClick={() => navigate('/onboarding')}
-            className="text-sm font-medium text-teal-700 dark:text-teal-400 hover:underline"
+            className="text-sm font-medium text-sage hover:underline"
           >
             Bekijk introductie opnieuw
           </button>
@@ -307,11 +307,11 @@ export function SettingsPage() {
       {/* Over */}
       <section>
         <SectionTitle>Over</SectionTitle>
-        <div className="bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl p-4 space-y-1">
-          <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-            AI Learning Log <span className="font-normal text-stone-400 dark:text-slate-500">v0.1.0</span>
+        <div className="bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] space-y-1">
+          <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+            AI Learning Log <span className="font-normal text-neutral-400 dark:text-neutral-500">v0.1.0</span>
           </p>
-          <p className="text-xs text-stone-500 dark:text-slate-400 leading-relaxed">
+          <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
             Alle data wordt lokaal opgeslagen op dit apparaat. Er wordt niets verstuurd naar externe servers.
           </p>
         </div>
